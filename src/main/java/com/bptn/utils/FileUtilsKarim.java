@@ -63,17 +63,27 @@ public class FileUtilsKarim {
 
 	// Writing on the file
 
-	public static void writeFile(Path k) throws IOException,FileSystemException {
+	public static void writeFile(Path k) throws IOException  {
 		String home = System.getProperty("user.home");
 		System.out.println(home);
 		Path p = Paths.get(home + "/test.txt");
 		if (!Files.exists(p)) {
-			Files.createFile(p);
+			try {
+				Files.createFile(p);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
 			if (Files.exists(p)) {
 				FileWriter writer = new FileWriter(new File(p.toUri()));
 				writer.write("This is what I'm writing onto the file");
-				writer.close();
+				try {
+					writer.close();
+				} catch (IOException e) {
+					System.out.println("this is the issue");
+					e.printStackTrace();
+				}
 
 			}
 		}
@@ -87,7 +97,8 @@ public class FileUtilsKarim {
 		if (!Files.exists(p)) {
 			Files.createFile(p);
 
-			FileWriter fw = new FileWriter("NewTest.txt");
+			try (FileWriter fw = new FileWriter("NewTest.txt")) {
+			}
 
 
 
