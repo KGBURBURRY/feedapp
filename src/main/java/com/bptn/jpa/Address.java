@@ -1,4 +1,4 @@
-package com.bptn.model;
+package com.bptn.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ public class Address {
 	@Column(name = "\"usernameKey\"")
 	String usernameKey;
 
-	@Column(name = "\"address")
+	@Column(name = "address")
 	String address;
 
 	@Column(name = "city")
