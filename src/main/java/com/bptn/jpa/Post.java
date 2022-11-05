@@ -2,62 +2,71 @@ package com.bptn.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
-	@Table(name="\"Post\"")
-	public class Post {
-		
-		@Id
-		@Column(name="\"postID\"")
-		String postID;
-		
-		@Column(name="\"postType\"")
-		String postType;
-		
-		@Column(name="\"usernameKey\"")
-		String usernameKey;
+@Table(name = "\"Post\"")
 
-		public Post() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+public class Post {
 
-		public Post(String postID, String postType, String usernameKey) {
-			super();
-			this.postID = postID;
-			this.postType = postType;
-			this.usernameKey = usernameKey;
-		}
+	@Id
+	@Column(name = "\"postID\"")
+	String postID;
 
-		public String getPostID() {
-			return postID;
-		}
+	@Column(name = "\"postType\"")
+	String postType;
 
-		public void setPostID(String postID) {
-			this.postID = postID;
-		}
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "\"usernameKey\"")
+	UserID userId; // relation with the userid table
 
-		public String getPostType() {
-			return postType;
-		}
+	public Post() {
+		super();
+	}
 
-		public void setPostType(String postType) {
-			this.postType = postType;
-		}
+	public Post(String postID, String postType) {
+		super();
+		this.postID = postID;
+		this.postType = postType;
+		// this.userID = userID;
+	}
 
-		public String getUsernameKey() {
-			return usernameKey;
-		}
+	public String getPostID() {
+		return postID;
+	}
 
-		public void setUsernameKey(String usernameKey) {
-			this.usernameKey = usernameKey;
-		}
+	public void setPostID(String postID) {
+		this.postID = postID;
+	}
 
-		@Override
-		public String toString() {
-			return "Post [postID=" + postID + ", postType=" + postType + ", usernameKey=" + usernameKey + "]";
-		}
-		
+	public String getPostType() {
+		return postType;
+	}
+
+	public void setPostType(String postType) {
+		this.postType = postType;
+	}
+
+	public UserID getUserId() {
+		return userId;
+	}
+
+	public void setUserId(UserID userId) {
+		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [postID=" + postID + ", postType=" + postType + ", userId=" + userId + "]";
+	}
+
+
+
 }

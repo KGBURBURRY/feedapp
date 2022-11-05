@@ -4,7 +4,7 @@ server:
     
 logging.level:
   web: OFF
-  '[com.bptn.controller]': DEBUG
+  '[com.bptn]': DEBUG
   '[org.hibernate]': ERROR
   
 spring:

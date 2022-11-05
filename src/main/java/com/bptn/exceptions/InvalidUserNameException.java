@@ -5,9 +5,23 @@ import org.slf4j.LoggerFactory;
 
 public class InvalidUserNameException extends Exception{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4353037272103659942L;
+
+
+
+	/**
+	 * 
+	 */
+
+
+
+
 	String errorMessage;
 
-	private static final long serialVersionUID = 4711357458911324597L;
+
 	
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	
