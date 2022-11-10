@@ -2,40 +2,47 @@ package com.bptn.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "\"Post\"")
-
 public class Post {
-
 	@Id
-	@Column(name = "\"postID\"")
+	@Column(name = "\"postId\"")
 	String postID;
-
 	@Column(name = "\"postType\"")
 	String postType;
 
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "\"usernameKey\"")
-	UserID userId; // relation with the userid table
+	private UserID userId;
+
+	@OneToOne(mappedBy = "post")
+	private ImageMetaData imageMetaData;
 
 	public Post() {
 		super();
+
 	}
 
-	public Post(String postID, String postType) {
+	public Post(String postID) {
+		super();
+		this.postID = postID;
+	}
+
+	public Post(String postID, String postType, UserID userId, ImageMetaData imageMetaData) {
 		super();
 		this.postID = postID;
 		this.postType = postType;
-		// this.userID = userID;
+		this.userId = userId;
+		this.imageMetaData = imageMetaData;
 	}
 
 	public String getPostID() {
@@ -62,11 +69,18 @@ public class Post {
 		this.userId = userId;
 	}
 
-	@Override
-	public String toString() {
-		return "Post [postID=" + postID + ", postType=" + postType + ", userId=" + userId + "]";
+	public ImageMetaData getImageMetaData() {
+		return imageMetaData;
 	}
 
+	public void setImageMetaData(ImageMetaData imageMetaData) {
+		this.imageMetaData = imageMetaData;
+	}
 
+	@Override
+	public String toString() {
+		return "Post [postID=" + postID + ", postType=" + postType + ", userId=" + userId + ", imageMetaData="
+				+ imageMetaData + "]";
+	}
 
 }
