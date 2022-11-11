@@ -15,11 +15,12 @@ import com.bptn.jpa.UserID;
 public interface FeedHistoryRepository extends JpaRepository<History, String> {
 	
 	List<History> findByUserId (UserID userId);
-	History findByPostType (String postType);
+	
+	List <History> findByPostType (String postType);
 	
 	@Transactional
 	void deleteByPostType (String postType);
 	
 
 
-}
+} 
