@@ -17,6 +17,9 @@ import com.bptn.service.FeedService;
 public class FeedController {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	
+	@Autowired
+	FeedService feedService;
 
 	@GetMapping("/ping")
 	public String ping() {
@@ -26,9 +29,6 @@ public class FeedController {
 		String str = "Feed App up and running";
 		return str;
 	}
-
-	@Autowired
-	FeedService feedService;
 
 	@GetMapping("/posts/username/{username}")
 	public List<Post> getPostsByUsername(@PathVariable("username") String username) {
@@ -40,7 +40,7 @@ public class FeedController {
 		return posts;
 	}
 
-	@GetMapping("/posts/postId/{postId}")
+	@GetMapping("/posts/postID/{postID}")
 	public Optional<Post> getPostsByPostId(@PathVariable("postId") String postID) {
 
 		logger.debug("Executing getPostsBypostID API");

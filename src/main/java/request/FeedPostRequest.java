@@ -3,20 +3,15 @@ package request;
 import javax.persistence.Column;
 
 public class FeedPostRequest {
-	
+
 	/*
-	{
-		"fromDate":"2022-10-13",
-		"toDate": "2022-11-07",
-		"queryKeyword": "newyork",
-		"username": "Karim"
-		}
-*/
+	 * { "fromDate":"2022-10-13", "toDate": "2022-11-07", "queryKeyword": "newyork",
+	 * "username": "Karim" }
+	 */
 	String fromDate;
 	String toDate;
 	String queryKeyword;
-	
-	@Column (name="username")
+
 	String username;
 
 	public String getFromDate() {

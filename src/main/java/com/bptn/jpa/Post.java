@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "\"Post\"")
 public class Post {
 	@Id
-	@Column(name = "\"postId\"")
+	@Column(name = "\"postID\"")
 	String postID;
 	@Column(name = "\"postType\"")
 	String postType;
@@ -35,14 +35,6 @@ public class Post {
 	public Post(String postID) {
 		super();
 		this.postID = postID;
-	}
-
-	public Post(String postID, String postType, UserID userId, ImageMetaData imageMetaData) {
-		super();
-		this.postID = postID;
-		this.postType = postType;
-		this.userId = userId;
-		this.imageMetaData = imageMetaData;
 	}
 
 	public String getPostID() {

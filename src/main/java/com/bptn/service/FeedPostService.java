@@ -97,7 +97,7 @@ public class FeedPostService {
 
 		feed.setPostType(feedResult);
 
-		feed.setUserId(userId);
+		feed.setUserId(userId);;
 		feed.setPostID(this.generatePostId(request));
 		logger.debug("Feed to be stored: {}", feed);
 

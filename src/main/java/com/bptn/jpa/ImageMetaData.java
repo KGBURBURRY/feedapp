@@ -7,6 +7,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "\"ImageMetaData\"")
 public class ImageMetaData {
@@ -23,6 +25,7 @@ public class ImageMetaData {
 	String imageDate;
 	@Column(name = "resolution")
 	String resolution;
+	@JsonIgnore
 	@OneToOne
 	@JoinColumn(name = "\"postKey\"")
 	Post post;

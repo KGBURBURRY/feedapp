@@ -1,59 +1,52 @@
 package com.bptn.jpa;
 
 
-import javax.persistence.Entity; 
-import javax.persistence.Table; 
-import javax.persistence.Column;
 
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-
-@Entity 
-@Table (name = "\"UserID\"")
-
+@Entity
+@Table (name="\"UserID\"")
 public class UserID {
-	
 	@Id
-	@Column ( name = "username")
+	@Column(name="username")
 	String username;
 	
-	@Column ( name = "name")
+	@Column(name="name")
 	String name;
 	
-	@Column ( name = "\"emailID\"")
+	@Column(name="\"emailID\"")
 	String emailID;
 	
-	@Column ( name = "\"phoneNumber\"")
+	@Column(name="\"phoneNumber\"")
 	String phoneNumber;
 	
-	@Column ( name = "\"userPassword\"")
+	@Column(name="\"userPassword\"")
 	String userPassword;
 	
-	@OneToMany(mappedBy="userId") // userID is the object name we use in the post entity
-	private List<Post> posts; 
+	@OneToMany(mappedBy = "userId")//
+	private List<Post> posts;
+	
+	@OneToMany(mappedBy = "userId")//
+	private List<History> history;
+
+
 
 	public UserID() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
-	public UserID (String username) {
+	public UserID(String username) {
 		super();
 		this.username = username;
 	}
-	
 
-	public UserID(String username, String name, String emailID, String phoneNumber, String userPassword) {
-		super();
-		this.username = username;
-		this.name = name;
-		this.emailID = emailID;
-		this.phoneNumber = phoneNumber;
-		this.userPassword = userPassword;
-	}
-	
 	public String getUsername() {
 		return username;
 	}
@@ -93,23 +86,23 @@ public class UserID {
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
-	
 
 	public List<Post> getPosts() {
 		return posts;
 	}
-	
+
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
 
-
 	@Override
 	public String toString() {
 		return "UserID [username=" + username + ", name=" + name + ", emailID=" + emailID + ", phoneNumber="
-				+ phoneNumber + ", userPassword=" + userPassword + "]";
-	} 
+				+ phoneNumber + ", userPassword=" + userPassword + ", posts=" + posts + "]";
 	
 
-
+	
 }
+}
+
+
