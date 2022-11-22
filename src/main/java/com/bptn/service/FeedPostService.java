@@ -73,8 +73,7 @@ public class FeedPostService {
 		{
 			urlBuilder.append("&from=").append(request.getFromDate());
 		}
-		if (request.getToDate() != null && !request.getToDate().isEmpty())
-			;
+		if (request.getToDate() != null && !request.getToDate().isEmpty());
 		{
 			urlBuilder.append("&from=").append(request.getToDate());
 		}
