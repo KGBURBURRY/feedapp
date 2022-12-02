@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.bptn.exceptions.InvalidRequestException;
 import com.bptn.exceptions.InvalidUserNameException;
 import com.bptn.models.Post;
+import com.bptn.request.FeedPostRequest;
 import com.bptn.service.FeedPostService;
 import com.bptn.service.UserService;
 
 import ch.qos.logback.classic.Logger;
-import request.FeedPostRequest;
 
 @RestController
 

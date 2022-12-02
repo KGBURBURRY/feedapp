@@ -13,8 +13,7 @@ import org.springframework.stereotype.Service;
 import com.bptn.models.ImageMetaData;
 import com.bptn.models.Post;
 import com.bptn.repository.FeedImageMetaDataRepository;
-
-import request.FeedMediaRequest;
+import com.bptn.request.FeedMediaRequest;
 
 @Service
 public class FeedMediaService {

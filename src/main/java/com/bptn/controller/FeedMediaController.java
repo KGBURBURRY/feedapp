@@ -12,9 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bptn.models.ImageMetaData;
+import com.bptn.request.FeedMediaRequest;
 import com.bptn.service.FeedMediaService;
-
-import request.FeedMediaRequest;
 
 @RestController
 public class FeedMediaController {

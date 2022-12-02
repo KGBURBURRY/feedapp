@@ -12,9 +12,9 @@ import org.springframework.web.client.RestTemplate;
 import com.bptn.models.Post;
 import com.bptn.models.UserID;
 import com.bptn.repository.FeedPostRepository;
+import com.bptn.request.FeedPostRequest;
 
 import ch.qos.logback.classic.Logger;
-import request.FeedPostRequest;
 
 @Service
 public class FeedPostService {

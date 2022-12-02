@@ -41,8 +41,11 @@ public class UserID implements Serializable {
     @JsonManagedReference
     private Set<Address> addresses = new LinkedHashSet<>();
 
-    public UserID(String username2) {
-		// TODO Auto-generated constructor stub
+    public UserID() {
+	}
+
+	public UserID(String username) {
+		this.username = username;
 	}
 
 	public Set<Address> getAddresses() {

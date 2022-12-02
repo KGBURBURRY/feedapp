@@ -1,4 +1,4 @@
-package request;
+package com.bptn.request;
 
 import javax.persistence.Column;
 
