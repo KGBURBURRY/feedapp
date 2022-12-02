@@ -5,8 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.bptn.jpa.Post;
-import com.bptn.jpa.UserID;
+
+import com.bptn.models.Post;
+import com.bptn.models.UserID;
 import com.bptn.repository.FeedRepository;
 
 @Service

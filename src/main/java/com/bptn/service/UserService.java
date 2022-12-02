@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bptn.exceptions.InvalidUserNameException;
-import com.bptn.jpa.UserID;
+import com.bptn.models.UserID;
 import com.bptn.repository.UserRepository;
 
 import ch.qos.logback.classic.Logger;

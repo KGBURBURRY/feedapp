@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.bptn.jpa.Post;
-import com.bptn.jpa.UserID;
+import com.bptn.models.Post;
+import com.bptn.models.UserID;
 import com.bptn.repository.FeedPostRepository;
 
 import ch.qos.logback.classic.Logger;

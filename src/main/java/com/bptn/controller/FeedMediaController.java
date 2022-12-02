@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bptn.jpa.ImageMetaData;
+import com.bptn.models.ImageMetaData;
 import com.bptn.service.FeedMediaService;
 
 import request.FeedMediaRequest;

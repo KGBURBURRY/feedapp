@@ -8,8 +8,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.bptn.jpa.History;
-import com.bptn.jpa.UserID;
+import com.bptn.models.History;
+import com.bptn.models.UserID;
 
 @Repository
 public interface FeedHistoryRepository extends JpaRepository<History, String> {

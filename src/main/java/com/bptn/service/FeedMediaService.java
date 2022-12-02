@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.bptn.jpa.ImageMetaData;
-import com.bptn.jpa.Post;
+import com.bptn.models.ImageMetaData;
+import com.bptn.models.Post;
 import com.bptn.repository.FeedImageMetaDataRepository;
 
 import request.FeedMediaRequest;

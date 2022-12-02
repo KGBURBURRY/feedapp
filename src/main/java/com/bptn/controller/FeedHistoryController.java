@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bptn.exceptions.InvalidUserNameException;
-import com.bptn.jpa.History;
+import com.bptn.models.History;
 import com.bptn.service.FeedHistoryService;
 
 @RestController
