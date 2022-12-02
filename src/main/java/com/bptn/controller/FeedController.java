@@ -30,7 +30,7 @@ public class FeedController {
 		return str;
 	}
 
-	@GetMapping("/posts/username/{username}")
+	@GetMapping("/Posts/username/{username}")
 	public List<Post> getPostsByUsername(@PathVariable("username") String username) {
 
 		logger.debug("Executing getPostsByUsername API");

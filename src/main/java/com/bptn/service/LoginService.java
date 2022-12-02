@@ -7,16 +7,22 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bptn.exceptions.InvalidRequestException;
 import com.bptn.exceptions.InvalidUserCredentialsException;
+import com.bptn.exceptions.InvalidUserNameException;
 import com.bptn.models.AuthenticationUser;
 import com.bptn.models.UserID;
 import com.bptn.repository.AuthenticationUserRepository;
 import com.bptn.request.LoginRequest;
+import com.bptn.request.SignupRequest;
 
 @Service
 public class LoginService {
 
     private final Logger LOGGER = LoggerFactory.getLogger(this.getClass());
+    
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private AuthenticationUserRepository authenticationUserRepository;
@@ -35,5 +41,31 @@ public class LoginService {
         LOGGER.debug("Username = {} or Password = {} validated successfully", loginRequest.getUsername(), loginRequest.getPassword());
         return authenticationUser.getUserID();
     }
-
+    public UserID signup(SignupRequest signupRequest) throws InvalidRequestException {
+        try {
+            userService.validateUserId(signupRequest.getUsername());
+            throw new InvalidRequestException("User already exist");
+        } catch (InvalidUserNameException invalidUserNameException) {
+            LOGGER.info("Expected Error. User doesn't exist");
+        }
+        UserID userID = new UserID();
+        userID.setUsername(signupRequest.getUsername());
+        userID.setEmailID(signupRequest.getEmailId());
+        userID.setPhoneNumber(signupRequest.getPhoneNumber());
+        userID.setName(signupRequest.getName());
+        AuthenticationUser authenticationUser = new AuthenticationUser();
+        authenticationUser.setId(signupRequest.getUsername());
+        authenticationUser.setUserPassword(signupRequest.getPassword());
+        authenticationUser.setUserID(userID);
+        authenticationUser.setPhoneNumber(signupRequest.getPhoneNumber());
+        //Since there are non-null constraints on authentication user table, we're setting them empty.
+        authenticationUser.setSecurityQuestion1(StringUtils.EMPTY);
+        authenticationUser.setSecurityQuestion2(StringUtils.EMPTY);
+        authenticationUser.setSecurityQuestion3(StringUtils.EMPTY);
+        authenticationUser.setSecurityAnswer1(StringUtils.EMPTY);
+        authenticationUser.setSecurityAnswer2(StringUtils.EMPTY);
+        authenticationUser.setSecurityAnswer3(StringUtils.EMPTY);
+        authenticationUser = authenticationUserRepository.save(authenticationUser);
+        return authenticationUser.getUserID();
+    }
 }
