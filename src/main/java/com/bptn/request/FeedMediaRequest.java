@@ -9,6 +9,13 @@ public class FeedMediaRequest {
 	 String imageDate;
 	 String imageResolution;
 	 String postID;
+	 String postKey;
+	public String getPostKey() {
+		return postKey;
+	}
+	public void setPostKey(String postKey) {
+		this.postKey = postKey;
+	}
 	public String getImageName() {
 		return imageName;
 	}

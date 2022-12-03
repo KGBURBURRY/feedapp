@@ -1,78 +1,75 @@
 package com.bptn.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "\"Post\"")
-public class Post {
-	@Id
-	@Column(name = "\"postID\"")
-	String postID;
-	@Column(name = "\"postType\"")
-	String postType;
+@NamedQuery(name="Post.findAll", query="SELECT p FROM Post p")
+public class Post implements Serializable {
 
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "\"usernameKey\"")
-	private UserID userId;
 
-	@OneToOne(mappedBy = "post")
-	private ImageMetaData imageMetaData;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "\"postID\"", nullable = false)
+    private Long id;
 
-	public Post() {
-		super();
+    @Column(name = "\"postType\"", nullable = false)
+    private String postType;
 
-	}
+    
+    @Column(name = "post", nullable = false)
+    private String post;
 
-	public Post(String postID) {
-		super();
-		this.postID = postID;
-	}
+    @Basic(fetch = FetchType.LAZY)
+    @Column(name = "\"usernameKey\"", nullable = false)
+    private String usernameKey;
 
-	public String getPostID() {
-		return postID;
-	}
+    @OneToMany(mappedBy = "postKey")
+    @JsonManagedReference
+    private Set<ImageMetaData> imageMetaData = new LinkedHashSet<>();
 
-	public void setPostID(String postID) {
-		this.postID = postID;
-	}
+    public Set<ImageMetaData> getImageMetaData() {
+        return imageMetaData;
+    }
 
-	public String getPostType() {
-		return postType;
-	}
+    public void setImageMetaData(Set<ImageMetaData> imageMetaData) {
+        this.imageMetaData = imageMetaData;
+    }
 
-	public void setPostType(String postType) {
-		this.postType = postType;
-	}
+    public String getUsernameKey() {
+        return usernameKey;
+    }
 
-	public UserID getUserId() {
-		return userId;
-	}
+    public void setUsernameKey(String usernameKey) {
+        this.usernameKey = usernameKey;
+    }
 
-	public void setUserId(UserID userId) {
-		this.userId = userId;
-	}
+    public String getPost() {
+        return post;
+    }
 
-	public ImageMetaData getImageMetaData() {
-		return imageMetaData;
-	}
+    public void setPost(String post) {
+        this.post = post;
+    }
 
-	public void setImageMetaData(ImageMetaData imageMetaData) {
-		this.imageMetaData = imageMetaData;
-	}
+    public String getPostType() {
+        return postType;
+    }
 
-	@Override
-	public String toString() {
-		return "Post [postID=" + postID + ", postType=" + postType + ", userId=" + userId + ", imageMetaData="
-				+ imageMetaData + "]";
-	}
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

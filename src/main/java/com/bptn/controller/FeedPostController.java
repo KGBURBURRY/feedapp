@@ -41,7 +41,7 @@ public class FeedPostController {
 
 			this.userService.validateUserId(request.getUsername());
 
-			Post feed = this.feedPostService.getPostFormNewsAndSavePost(request);
+			Post feed = this.feedPostService.getPostFromNewsAndSavePost(request);
 
 			logger.debug("Post Sucessfully Saved.");
 
