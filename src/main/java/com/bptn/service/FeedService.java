@@ -1,5 +1,19 @@
 package com.bptn.service;
 
+import static com.bptn.request.CreatePostRequest.DEFAULT_POST_TYPE;
+
+import java.time.LocalDate;
+import java.util.LinkedList;
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.bptn.exceptions.InvalidPostException;
 import com.bptn.exceptions.InvalidUserNameException;
 import com.bptn.models.ImageMetaData;
@@ -7,18 +21,6 @@ import com.bptn.models.Post;
 import com.bptn.repository.FeedImageMetaDataRepository;
 import com.bptn.repository.FeedRepository;
 import com.bptn.request.CreatePostRequest;
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.util.LinkedList;
-import java.util.List;
-
-import static com.bptn.request.CreatePostRequest.DEFAULT_POST_TYPE;
 
 @Service
 public class FeedService {
@@ -53,9 +55,9 @@ public class FeedService {
         return post;
     }
 
-    public Post getPostsByPostType(String postType) throws InvalidPostException {
+    public List<Post> getPostsByPostType(String postType) throws InvalidPostException {
         LOGGER.info("retrieving Posts from DB by postType");
-        Post post = feedRepository.findByPostType(postType);
+        List<Post> post = feedRepository.findByPostType(postType);
         if (post == null) {
             throw new InvalidPostException("PostType doesn't exist");
         }
